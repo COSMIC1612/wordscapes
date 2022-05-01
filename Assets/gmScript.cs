@@ -27,13 +27,20 @@ public class gmScript : MonoBehaviour
     public static string word4L="HEAT";
     public static List<string> selectLetter = new List<string> () {"","","","","","","",""};
     public static int letterNum=0;
-
+    public GameObject GameOverUI;
+    public static bool GameIsOver;
+    public static int RightWords=0;
+    public GameObject LevelWonUI;
+    public static bool LevelIsWon;
+    
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+    LevelIsWon=false;
+    GameIsOver=false;
     bottomL1Obj.GetComponent<TextMesh>().text=availLetter1[0];
     bottomL2Obj.GetComponent<TextMesh>().text=availLetter2[0];
     bottomL3Obj.GetComponent<TextMesh>().text=availLetter3[0];
@@ -56,7 +63,8 @@ public class gmScript : MonoBehaviour
              {
                 letter1.GetComponent<TextMesh>().text=selectLetter[1];
                 letter2.GetComponent<TextMesh>().text=selectLetter[2];
-                letter3.GetComponent<TextMesh>().text=selectLetter[3]; 
+                letter3.GetComponent<TextMesh>().text=selectLetter[3];
+                RightWords++; 
              }
             else
              {
@@ -72,6 +80,7 @@ public class gmScript : MonoBehaviour
                 letter5.GetComponent<TextMesh>().text=selectLetter[2];
                 letter6.GetComponent<TextMesh>().text=selectLetter[3];
                 letter7.GetComponent<TextMesh>().text=selectLetter[4];
+                RightWords++;
             }
             else
             {
@@ -86,8 +95,32 @@ public class gmScript : MonoBehaviour
             letterNum=0;
             
         }
+        if (GameIsOver)
+            return;
+        if(CountDownTimer.CurrentTime==0 && RightWords<2)    
+            EndGame(); 
+        if(RightWords==2)
+        {
+           LevelWon();
+           Time.timeScale=0f;
+           RightWords=0;
+        }
 
         
+    }
 
+    void EndGame()
+    {
+        RightWords=0;
+        LevelIsWon=false;
+        GameIsOver=true;
+        GameOverUI.SetActive(true);
+    }
+
+    void LevelWon()
+    {
+        GameIsOver=true;
+        LevelIsWon=true;
+        LevelWonUI.SetActive(true);
     }
 }
