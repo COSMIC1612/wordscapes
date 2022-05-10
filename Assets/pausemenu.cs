@@ -12,7 +12,7 @@ public class pausemenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && gmScript.RightWords<2 && !gmScript.GameIsOver)
+        if (Input.GetKeyDown(KeyCode.Escape) && gmlvl3.RightWords<8 && !gmlvl3.GameIsOver)
         {
             if(GameIsPaused)
             {

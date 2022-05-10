@@ -17,21 +17,23 @@ public class gmScript : MonoBehaviour
     public Transform bottomL2Obj;
     public Transform bottomL3Obj;
     public Transform bottomL4Obj;
-    public static List<string> availLetter1 = new List<string> () {"H"};
-    public static List<string> availLetter2 = new List<string> () {"T"};
-    public static List<string> availLetter3 = new List<string> () {"E"};
-    public static List<string> availLetter4 = new List<string> () {"A"};
+    public static List<string> availLetter1 = new List<string> () {"F"};
+    public static List<string> availLetter2 = new List<string> () {"O"};
+    public static List<string> availLetter3 = new List<string> () {"N"};
+    public static List<string> availLetter4 = new List<string> () {"I"};
     public KeyCode RMB;
     public int wordLen;
-    public static string word3L="EAT";
-    public static string word4L="HEAT";
-    public static List<string> selectLetter = new List<string> () {"","","","","","","",""};
+    public static string word2L="IN";
+    public static string word3L="ION";
+    public static string word4L="INFO";
+    public static List<string> selectLetter = new List<string> () {"","","","","","","","","","","","","","","","",""};
     public static int letterNum=0;
     public GameObject GameOverUI;
     public static bool GameIsOver;
     public static int RightWords=0;
     public GameObject LevelWonUI;
     public static bool LevelIsWon;
+    public static bool lvl2verif = false;
     
 
 
@@ -62,13 +64,27 @@ public class gmScript : MonoBehaviour
             if(currentWord == word3L)
              {
                 letter1.GetComponent<TextMesh>().text=selectLetter[1];
-                letter2.GetComponent<TextMesh>().text=selectLetter[2];
-                letter3.GetComponent<TextMesh>().text=selectLetter[3];
+                letter7.GetComponent<TextMesh>().text=selectLetter[2];
+                letter2.GetComponent<TextMesh>().text=selectLetter[3];
                 RightWords++; 
              }
             else
              {
                 Debug.Log("wrong 3L word");
+             }
+            
+            }
+            else if(wordLen == 2)
+            {
+            if(currentWord == word2L)
+             {
+                letter4.GetComponent<TextMesh>().text=selectLetter[1];
+                letter3.GetComponent<TextMesh>().text=selectLetter[2];
+                RightWords++; 
+             }
+            else
+             {
+                Debug.Log("wrong 2L word");
              }
             
             }
@@ -97,9 +113,9 @@ public class gmScript : MonoBehaviour
         }
         if (GameIsOver)
             return;
-        if(CountDownTimer.CurrentTime==0 && RightWords<2)    
+        if(CountDownTimer.CurrentTime==0 && RightWords<3)    
             EndGame(); 
-        if(RightWords==2)
+        if(RightWords==3)
         {
            LevelWon();
            Time.timeScale=0f;
@@ -122,5 +138,6 @@ public class gmScript : MonoBehaviour
         GameIsOver=true;
         LevelIsWon=true;
         LevelWonUI.SetActive(true);
+        lvl2verif = true ;
     }
 }

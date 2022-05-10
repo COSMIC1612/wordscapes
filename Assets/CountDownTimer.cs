@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CountDownTimer : MonoBehaviour
 {
     public static float CurrentTime;
-    public static float StartingTime=10f;
+    public static float StartingTime=15f;
     public Text CountDownText;
     
     
@@ -25,7 +25,7 @@ public class CountDownTimer : MonoBehaviour
 
         if(CurrentTime<=0)
             CurrentTime=0;
-        if(gmScript.RightWords!=2 && !gmScript.LevelIsWon)
+        if(gmScript.RightWords!=3 && !gmScript.LevelIsWon)
             CountDownText.text=CurrentTime.ToString("0");
         
     }

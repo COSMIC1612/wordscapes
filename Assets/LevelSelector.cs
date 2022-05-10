@@ -8,12 +8,27 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
-        int levelReached=PlayerPrefs.GetInt("levelReached",1);
-
-        for(int i=1;i<levelButtons.Length;i++)
+        //int levelReached=PlayerPrefs.GetInt("levelReached",1);
+        if(gmScript.lvl2verif)
+        {
+            levelButtons[1].interactable=true;
+        }
+        else
+        {
+            levelButtons[1].interactable=false;
+        }
+        /*for(int i=1;i<levelButtons.Length;i++)
         {
             if(i+1>levelReached)
              levelButtons[i].interactable=false;
+        }*/
+        if(gmlvl2.lvl3verif)
+        {
+            levelButtons[2].interactable=true;
+        }
+        else
+        {
+            levelButtons[2].interactable=false;
         }
     }
 

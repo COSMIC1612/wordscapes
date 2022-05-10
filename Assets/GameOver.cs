@@ -7,6 +7,12 @@ public class GameOver : MonoBehaviour
 {
     public SceneFader sceneFader;
 
+    public void LoadingLevel()
+    {
+        Time.timeScale=1f;
+        Debug.Log("To The Next Level ...");
+        SceneManager.LoadScene("Level02");
+    }
 
 
 

@@ -21,5 +21,6 @@ public class Clickcontrol : MonoBehaviour
         gmScript.letterNum ++;
         gmScript.selectLetter[gmScript.letterNum]=GetComponent<TextMesh>().text;
         Debug.Log(gmScript.currentWord);
+        
     }
 }
